@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import LinksForm from "./LinkForm";
-
-import Firebase  from "../../config/firebase";
+//Importacion del firestore
+import db  from "../../config/firestore";
 //Importamos toast para mensajes dinamicos (instalamos librería => npm install --save react-toastify)
 import { toast } from "react-toastify";
 
@@ -14,7 +14,8 @@ const Links = () => {
   //Hacemos la consulta para traernos todos los links de firebase. Es de manera asincrona asi que tenemos que usar async.
   //Con onSnapshot hacemos que al renderizar aparaezca al instate.
   const getLinks = async () => {
-    Firebase.firestore.collection("links").onSnapshot((querySnapshot) => {
+    
+    db.collection("links").onSnapshot((querySnapshot) => {
       const docs = [];
       querySnapshot.forEach((doc) => {
         docs.push({ ...doc.data(), id: doc.id });
@@ -27,7 +28,7 @@ const Links = () => {
   // Y creamos un toast para mandar un mensaje dimamico diciendo que lo hemos borrado
   const onDeleteLink = async (id) => {
     if (window.confirm("are you sure you want to delete this link?")) {
-      await Firebase.firestore.collection("links").doc(id).delete();
+      await db.collection("links").doc(id).delete();
       toast("Link Removed Successfully", {
         type: "error", // error => color rojo
         autoClose: 2000 // El mensaje se autocierra pasado 2 segundos 
@@ -46,13 +47,13 @@ const Links = () => {
   const addOrEditLink = async (linkObject) => {
     try {
       if (currentId === "") {
-        await Firebase.firestore.collection("links").doc().set(linkObject);
+        await db.collection("links").doc().set(linkObject);
         toast("New Link Added", {
           type: "success", // success => color verde
           autoClose: 2000 // El mensaje se autocierra pasado 2 segundos 
         });
       } else {
-        await Firebase.firestore.collection("links").doc(currentId).update(linkObject);
+        await db.collection("links").doc(currentId).update(linkObject);
         toast("Link Updated Successfully", {
           type: "info", // info => color azul
           autoClose: 2000 // El mensaje se autocierra pasado 2 segundos 

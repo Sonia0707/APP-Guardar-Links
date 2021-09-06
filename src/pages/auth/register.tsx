@@ -79,6 +79,7 @@ const RegisterPage: React.FunctionComponent<IPageProps> = props => {
         <AuthContainer header="Register">
             <FormGroup>
                 <Input 
+                    style={{ color: "white" }}
                     type="email"
                     name="email"
                     id="email"
@@ -90,7 +91,7 @@ const RegisterPage: React.FunctionComponent<IPageProps> = props => {
             <FormGroup>
                  {/** El autocompletado es para que coincidan contrseñas*/}
                 <Input 
-               
+                    style={{ color: "white" }}
                     autoComplete="new-password"
                     type="password"
                     name="password"
@@ -102,6 +103,7 @@ const RegisterPage: React.FunctionComponent<IPageProps> = props => {
             </FormGroup>
             <FormGroup>
                 <Input 
+                    style={{ color: "white" }}
                     autoComplete="new-password"
                     type="password"
                     name="confirm"

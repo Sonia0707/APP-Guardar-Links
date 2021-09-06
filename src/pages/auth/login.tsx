@@ -67,6 +67,7 @@ const LoginPage: React.FunctionComponent<IPageProps> = props => {
         <AuthContainer header="Login">
             <FormGroup>
                 <Input 
+                    style={{ color: "white" }}
                     type="email"
                     name="email"
                     id="email"
@@ -77,6 +78,7 @@ const LoginPage: React.FunctionComponent<IPageProps> = props => {
             </FormGroup>
             <FormGroup>
                 <Input 
+                    style={{ color: "white" }}
                     autoComplete="new-password"
                     type="password"
                     name="password"

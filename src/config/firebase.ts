@@ -18,6 +18,8 @@ export const Providers = {
 // en todos nuestros comandos de base de firebase.
 export const auth = firebase.auth();
 
+//export const db = Firebase.firestore();
+
 // Por ultimo exportamos el objeto:
 export default Firebase;
 

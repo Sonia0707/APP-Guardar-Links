@@ -8,10 +8,11 @@ import routes from './config/routes';
 
 export interface IApplicationProps { }
 
-//Archivo para definir las rutas 
+//Archivo para definir las rutas (Página INICIAL)
 const Application: React.FunctionComponent<IApplicationProps> = props => {
     const [loading, setLoading] = useState<boolean>(true);
 
+    //Comprobacion si el usuario pertenece a la base de datos con el auth de firebase:
     useEffect(() => {
         auth.onAuthStateChanged(user => {
             if (user)
