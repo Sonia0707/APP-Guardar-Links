@@ -11,7 +11,6 @@ const Firebase = firebase.initializeApp(config.firebase);
 export const Providers = {
     //Clave y eso sera == A (firebase.auth) => El proveedor de Autentificación de Google y para otras redes sociales
     // se aria lo mismo pero en este caso solo estamos uilizando Google
-    
     google: new firebase.auth.GoogleAuthProvider()
 }
 
