@@ -4,10 +4,12 @@ import LinksForm from "./LinkForm";
 import db  from "../../config/firestore";
 //Importamos toast para mensajes dinamicos (instalamos librería => npm install --save react-toastify)
 import { toast } from "react-toastify";
+//import firebase from "firebase";
 
 const Links = () => {
 //Creamos el useState con su estado inicial de los (links) y su cambio posterior (setLinks):
-  const [links, setLinks] = useState([]);
+;
+  const [links, setLinks] = useState<any[]>([]); 
   //Creamos el useState con su estado inicial de los (currentId) y su cambio posterior (setCurrentId):
   const [currentId, setCurrentId] = useState("");
 
@@ -16,7 +18,8 @@ const Links = () => {
   const getLinks = async () => {
     
     db.collection("links").onSnapshot((querySnapshot) => {
-      const docs = [];
+      const docs = [] as  any;
+
       querySnapshot.forEach((doc) => {
         docs.push({ ...doc.data(), id: doc.id });
       });
@@ -26,7 +29,7 @@ const Links = () => {
 
   //Borramos los datos facilmente con el delete() Mandamos un mensaje de si esta seguro de borrar los datos.
   // Y creamos un toast para mandar un mensaje dimamico diciendo que lo hemos borrado
-  const onDeleteLink = async (id) => {
+  const onDeleteLink = async (id: string | undefined) => {
     if (window.confirm("are you sure you want to delete this link?")) {
       await db.collection("links").doc(id).delete();
       toast("Link Removed Successfully", {
@@ -44,15 +47,17 @@ const Links = () => {
   // 2 OPCIONES:
   // 1. Añadimos los datos a la colección de firbase seteando el linkObject y creamos otro mensaje dimamico para que se vea.
   // 2. Actualizamos los datos a la colección de firbase haciendo un update el linkObject y creamos otro mensaje dimamico para que se vea.
-  const addOrEditLink = async (linkObject) => {
+  const addOrEditLink = async (linkObject: { [x: string]: any; }) => {
     try {
       if (currentId === "") {
+        console.log("Añado datos a la base");
         await db.collection("links").doc().set(linkObject);
         toast("New Link Added", {
           type: "success", // success => color verde
           autoClose: 2000 // El mensaje se autocierra pasado 2 segundos 
         });
       } else {
+        console.log("Entro en el update");
         await db.collection("links").doc(currentId).update(linkObject);
         toast("Link Updated Successfully", {
           type: "info", // info => color azul

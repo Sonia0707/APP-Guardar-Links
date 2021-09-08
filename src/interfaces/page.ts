@@ -1,3 +1,5 @@
 export default interface IPageProps {
-    name: string;
+    //name: string;
+    addOrEditLink: any;
+    currentId: any;
 }

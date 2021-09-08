@@ -14,49 +14,63 @@ const routes: IRoute[] = [
         exact: true,
         component: HomePage,
         name: 'Home Page',
-        protected: true
+        protected: true,
+        addOrEditLink: '', 
+        currentId: '',
     },
     {
         path: '/register',
         exact: true,
         component: RegisterPage,
         name: 'Register Page',
-        protected: false
+        protected: false,
+        addOrEditLink: '', 
+        currentId: '',
     },
     {
         path: '/login',
         exact: true,
         component: LoginPage,
         name: 'Login Page',
-        protected: false
+        protected: false,
+        addOrEditLink: '', 
+        currentId: '',
     },
     {
         path: '/change',
         exact: true,
         component: ChangePasswordPage,
         name: 'Change Password Page',
-        protected: true
+        protected: true,
+        addOrEditLink: '', 
+        currentId: '',
     },
     {
         path: '/logout',
         exact: true,
         component: LogoutPage,
         name: 'Logout Page',
-        protected: true
+        protected: true,
+        addOrEditLink: '', 
+        currentId: '',
     },
     {
         path: '/forget',
         exact: true,
         component: ForgotPasswordPage,
         name: 'Forgot Password Page',
-        protected: false
+        protected: false,
+        addOrEditLink: '', 
+        currentId: '',
     },
     {
         path: '/reset',
         exact: true,
         component: ResetPasswordPage,
         name: 'Reset Password Page',
-        protected: false
+        protected: false,
+        addOrEditLink: '', 
+        currentId: '',
     }
 ];
 

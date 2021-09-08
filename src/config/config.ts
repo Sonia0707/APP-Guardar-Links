@@ -1,3 +1,4 @@
+//Clave de autotentificación para el firebase:
 const config = {
     firebase: {
         apiKey: "AIzaSyC6IF_TzThVkBp5zOc4qQLurfhxRp_jHAY",
